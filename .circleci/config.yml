@@ -40,7 +40,7 @@ jobs:
           command: |
             set -x
             sudo dockerd
-            systemctl start docker
+            sudo systemctl start docker
             sudo docker info
             sudo docker-compose -f docker-compose-javaworker.yml up -d
           
