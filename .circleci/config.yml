@@ -27,6 +27,10 @@ jobs:
             tar -xz -C /tmp -f /tmp/docker-$VER.tgz
             sudo mv /tmp/docker/* /usr/bin
       - run:
+          name: Show uname and architecture 
+          command: "echo uname -s"  "echo uname -m"
+         
+      - run:
           name: Install Docker Compose
           command: |
             set -x
