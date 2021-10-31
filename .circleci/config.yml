@@ -38,7 +38,6 @@ jobs:
       - run:
           name: Start container and verify it's working
           command: |
-            sudo service docker restart
             sudo docker info
             set -x
             sudo docker-compose -f docker-compose-javaworker.yml up -d
