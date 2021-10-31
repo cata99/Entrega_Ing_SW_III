@@ -19,6 +19,9 @@ jobs:
           name: "Show path"
           command: echo  $PATH
       - run:
+          name: "Show path"
+          command: ls 
+      - run:
           name: Install Docker client
           command: |
             set -x
@@ -35,6 +38,7 @@ jobs:
             set -x
             sudo wget -O /usr/local/bin/docker-compose "https://github.com/docker/compose/releases/download/1.11.2/docker-compose-linux-x86_64" 
             sudo chmod +x /usr/local/bin/docker-compose
+
 
           
 
