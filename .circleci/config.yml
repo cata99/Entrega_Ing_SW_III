@@ -38,8 +38,8 @@ jobs:
       - run:
           name: Start container and verify it's working
           command: |
-            service docker start
-            docker info
+            sudo service docker start
+            sudo docker info
             set -x
             sudo docker-compose -f docker-compose-javaworker.yml up -d
 
