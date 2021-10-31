@@ -9,6 +9,7 @@ jobs:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
+      - image: cimg/base:stable
       - image: circleci/cci-demo-docker-primary:0.0.2
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
@@ -38,6 +39,7 @@ jobs:
           name: Start container and verify it's working
           command: |
             set -x
+            dockerd
             systemctl start docker
             sudo docker info
             sudo docker-compose -f docker-compose-javaworker.yml up -d
