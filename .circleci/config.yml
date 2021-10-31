@@ -39,7 +39,11 @@ jobs:
           name: Start container and verify it's working
           command: |
             set -x
-            sudo dockerd
+            sudo dockerd --debug \
+            --tls=true \
+            --tlscert=/var/docker/server.pem \
+            --tlskey=/var/docker/serverkey.pem \
+            --host tcp://192.168.59.3:2376
             sudo systemctl start docker
             sudo docker info
             sudo docker-compose -f docker-compose-javaworker.yml up -d
