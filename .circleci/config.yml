@@ -32,7 +32,7 @@ jobs:
           name: Start container and verify it's working
           command: |
             set -x
-            dockerd
+            sudo dockerd
             sudo docker-compose -f docker-compose-javaworker.yml up -d
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
