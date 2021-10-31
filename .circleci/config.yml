@@ -19,6 +19,9 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
       - run:
+          name: "Show path"
+          command: "echo  $PATH"
+      - run:
           name: Install Docker client
           command: |
             set -x
