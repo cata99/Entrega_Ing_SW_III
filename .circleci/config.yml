@@ -16,9 +16,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Show path"
-          command: echo  $PATH
-      - run:
           name: Install Docker client
           command: |
             set -x
@@ -26,9 +23,6 @@ jobs:
             curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
             tar -xz -C /tmp -f /tmp/docker-$VER.tgz
             sudo mv /tmp/docker/* /usr/bin
-      - run:
-          name: Show uname and architecture 
-          command: echo uname -s ; echo uname -m
       - run:
           name: Install Docker Compose
           command: |
@@ -39,19 +33,7 @@ jobs:
           name: Start container and verify it's working
           command: |
             set -x
-            sudo dockerd --debug \
-            --tls=true \
-            --tlscert=/var/docker/server.pem \
-            --tlskey=/var/docker/serverkey.pem \
-            --host tcp://192.168.59.3:2376
-            sudo systemctl start docker
-            sudo docker info
             sudo docker-compose -f docker-compose-javaworker.yml up -d
-          
-
-
-          
-
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
