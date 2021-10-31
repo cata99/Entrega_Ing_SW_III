@@ -9,7 +9,7 @@ jobs:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
-      - image: cimg/base:2021.04
+      - image: circleci/cci-demo-docker-primary:0.0.2
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
@@ -21,19 +21,18 @@ jobs:
             VER="17.03.0-ce"
             curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
             tar -xz -C /tmp -f /tmp/docker-$VER.tgz 
-            sudo mv /tmp/docker/* /usr/bin
+            mv /tmp/docker/* /usr/bin
       - run:
           name: Install Docker Compose
           command: |
             set -x
-            sudo wget -O /usr/local/bin/docker-compose "https://github.com/docker/compose/releases/download/1.11.2/docker-compose-linux-x86_64" 
-            sudo chmod +x /usr/local/bin/docker-compose
+            wget -O /usr/local/bin/docker-compose "https://github.com/docker/compose/releases/download/1.11.2/docker-compose-linux-x86_64" 
+            chmod +x /usr/local/bin/docker-compose
       - run:
           name: Start container and verify it's working
           command: |
             set -x
-            sudo dockerd
-            sudo docker-compose -f docker-compose-javaworker.yml up -d
+            docker-compose -f docker-compose-javaworker.yml up -d
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
