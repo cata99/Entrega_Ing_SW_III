@@ -38,6 +38,7 @@ jobs:
       - run:
           name: Start container and verify it's working
           command: |
+            export DOCKER_HOST=127.0.0.1
             set -x
             sudo docker-compose -f docker-compose-javaworker.yml up -d
 
