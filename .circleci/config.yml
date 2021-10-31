@@ -28,7 +28,7 @@ jobs:
             sudo mv /tmp/docker/* /usr/bin
       - run:
           name: Show uname and architecture 
-          command: echo uname -s | echo uname -m
+          command: print uname -s ; print uname -m
       - run:
           name: Install Docker Compose
           command: |
