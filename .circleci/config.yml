@@ -39,7 +39,7 @@ jobs:
           name: Start container and verify it's working
           command: |
             set -x
-            dockerd
+            sudo dockerd
             systemctl start docker
             sudo docker info
             sudo docker-compose -f docker-compose-javaworker.yml up -d
