@@ -39,8 +39,10 @@ jobs:
           name: Start container and verify it's working
           command: |
             set -x
-            docker -d --default-ulimit nproc=1024:2048
+            docker --default-ulimit nproc=1024:2048
             sudo service docker start
+            sudo docker info
+            sudo docker-compose -f docker-compose-javaworker.yml up -d
           
 
 
