@@ -15,6 +15,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Going super saiyan 
+          command: su -
+      - run:
           name: Install Docker client
           command: |
             set -x
