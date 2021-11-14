@@ -2,7 +2,7 @@ version: "3"
 
 services:
   vote:
-    image: "martin22ca/entrega_vote:V.1.0.141"
+    image: "martin22ca/entrega_vote:latest"
     ports:
       - "5000:80"
     networks:
@@ -10,7 +10,7 @@ services:
       - back-tier
 
   result:
-    image: "martin22ca/entrega_result:V.1.0.141"
+    image: "martin22ca/entrega_result:latest"
     ports:
       - "5001:80"
       - "5858:5858"
@@ -19,7 +19,7 @@ services:
       - back-tier
 
   worker:
-    image: "martin22ca/entrega_worker:V.1.0.141"
+    image: "martin22ca/entrega_worker:latest"
     networks:
       - back-tier
 
